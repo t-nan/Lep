@@ -1,8 +1,37 @@
-<h1>All articles:</h1>
+<div class="container">
+<h4> All articles :</h4>
+<br>
 
-<% @articles.each do |article| %> </br>
+<% @articles.each do |article| %>
 
-<%=	article.title %></br>
-<%=	article.text %></br></br>
+<p>
+<%= article.title %></br>
+</p>
+
+<p>
+<%= article.text %></br>
+</p>
+
+<small>
+
+
+	Created at : <%= article.created_at.to_date.strftime ("%d ,%B %Y") %>	
+<br>	
+	Updated at : <%= article.updated_at.to_date.strftime ("%d ,%B %Y") %>
+<br>
+
+</small>
+
+<br>
+
+<p>
+    <%= link_to 'Show',article_path(article), class: "btn btn-outline-success btn-sm "%>
+    <%= link_to 'Edit',edit_article_path(article), class: "btn btn-outline-primary btn-sm "%> 
+    <%= link_to 'Delete',article_path(article), method: :delete, data: {confirm: "Really delete this article?"} , class: "btn btn-outline-danger btn-sm "%>
+</p>
+
+<hr>
 
 <% end %>
+
+</div>

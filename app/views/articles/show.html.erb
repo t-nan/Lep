@@ -1,0 +1,22 @@
+<div class="container">
+
+<h4> About this article </h4>
+
+<p>
+<%= @article.title %>
+</p>
+
+<p>
+<%= @article.text %>
+</p>
+
+<small>
+
+Created at : <%= @article.created_at.to_date.strftime ("%d ,%B %Y") %> </br>
+
+Updated at : <%= @article.updated_at.to_date.strftime ("%d ,%B %Y") %> </br>
+
+</small>
+
+</div>
+
