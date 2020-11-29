@@ -20,3 +20,66 @@ Updated at : <%= @article.updated_at.to_date.strftime ("%d ,%B %Y") %> </br>
 
 </div>
 
+
+<div class="container">
+
+<h4>Add new comment</h4>
+
+
+<%if @error %>
+	<div class="alert alert-danger"><%=@error.join(",")%></div>
+<% end %>
+
+
+<%= form_for ([@article,@article.comments.build]) do |f| %>
+
+<div class="form-row">
+<div class="form-group col-md-6">
+	<%= f.label :author %>
+	<%= f.text_field :author, class: "form-control" %>
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-group col-md-8">
+	<%= f.label :body %>
+	<%= f.text_area :body, class: "form-control" %>
+</div>
+</div>
+
+<div class="form-group">
+	<%= f.submit 'Save comment' ,class: "btn btn-outline-success" %>   
+	<%= link_to "Back", :back, class: "btn btn-outline-secondary" %>	
+</div>
+
+<% end %>
+
+</div>
+
+
+<div class="container">
+
+<h4> Comments to this article </h4>
+
+<p>
+
+<% @article.comments.each do |comment| %>
+
+</p>
+
+<%= comment.author %>
+
+<p>
+<%= comment.body %>
+</p>
+
+
+
+<% end %>
+
+</div>
+
+
+
+
+
