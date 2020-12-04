@@ -11,24 +11,44 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-</br>
 
-  <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/articles/new">New article</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/articles">All articles</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </li>
+
+<ul class="nav flex-column"> 
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+      <% if user_signed_in? %>
+
+          <p> Hello, <%= current_user.username %>
+
+          <p> <%= link_to 'Sign Out', destroy_user_session_path , method: :delete , data: {confirm: "Really Sign Out?"} ,class: "btn btn-outline-danger btn-sm" %></p>
+
+      <% else %>
+
+          <p><%= link_to 'Sign In', new_user_session_path ,class: "btn btn-outline-primary btn-sm" %> </p> 
+
+      <% end %>
+
 </ul>
 
+
+  <ul class="nav justify-content-center">
+    
+    <%= link_to 'About us', root_path , class: "nav-link" %>
+    <%= link_to 'New article', new_article_path , class: "nav-link" %>
+    <%= link_to 'All articles', articles_path , class: "nav-link" %>
+
+
+  </ul>
+ 
+
 <hr>
+    
+
+   
+
+
 
 </br>
 
@@ -41,4 +61,6 @@
     </script>
 
   </body>
+
+  
 </html>
